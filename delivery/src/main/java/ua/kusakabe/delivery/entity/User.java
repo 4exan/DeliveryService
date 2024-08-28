@@ -23,7 +23,6 @@ public class User implements UserDetails {
     private String phone;
     private String role;
 
-    private boolean enabled;
     private boolean isAccountNonExpired;
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
