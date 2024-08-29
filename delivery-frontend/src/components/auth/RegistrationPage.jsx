@@ -16,6 +16,7 @@ export default function RegistrationPage() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    console.log(formData);
   };
 
   const handleSubmit = async (e) => {
@@ -23,7 +24,7 @@ export default function RegistrationPage() {
 
     try {
       const token = localStorage.getItem("token");
-      const userData = await UserService.registration(formData, token);
+      await UserService.registration(formData, token);
 
       setFormData({
         username: "",
@@ -34,7 +35,7 @@ export default function RegistrationPage() {
         role: "USER",
       });
       alert("User registered successfully");
-      navigate("/admin/user-management");
+      navigate("/profile");
     } catch (error) {
       console.log("Registration error: ", error);
       alert("An error occured while registering user");
@@ -42,49 +43,59 @@ export default function RegistrationPage() {
   };
 
   return (
-    <div className="auth-container">
+    <div className="form-container">
       <h2>Registration:</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-item">
           <lable>Username:</lable>
+          <br></br>
           <input
             type="text"
+            name="username"
             value={formData.username}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-item">
           <lable>Password:</lable>
+          <br></br>
           <input
             type="password"
+            name="password"
             value={formData.password}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-item">
           <lable>Full name:</lable>
+          <br></br>
           <input
             type="text"
+            name="name"
             value={formData.name}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-item">
           <lable>Email:</lable>
+          <br></br>
           <input
             type="email"
+            name="email"
             value={formData.email}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-item">
           <lable>Phone:</lable>
+          <br></br>
           <input
             type="text"
+            name="phone"
             value={formData.phone}
             onChange={handleInputChange}
             required

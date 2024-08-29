@@ -30,27 +30,33 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="auth-container">
+    <div className="form-container">
       <h2>Login</h2>
       {error && <p className="error-massage">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-item">
           <lable>Username:</lable>
+          <br></br>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className="form-item">
           <lable>Password:</lable>
+          <br></br>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <div className="form-item">
+          <button className="btn action-btn" type="submit">
+            Login
+          </button>
+        </div>
       </form>
     </div>
   );

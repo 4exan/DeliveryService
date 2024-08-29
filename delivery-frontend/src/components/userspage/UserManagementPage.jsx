@@ -42,7 +42,7 @@ function UserManagementPage() {
   return (
     <div>
       <h2>Users Management Page</h2>
-      <button>
+      <button className="action-btn">
         {" "}
         <Link to="/registration">Add User</Link>
       </button>
@@ -62,8 +62,13 @@ function UserManagementPage() {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>
-                <button onClick={() => deleteUser(user.id)}>Delete</button>
-                <button>
+                <button
+                  className="action-btn"
+                  onClick={() => deleteUser(user.id)}
+                >
+                  Delete
+                </button>
+                <button className="action-btn">
                   <Link to={`/update-user/${user.id}`}>Update</Link>
                 </button>
               </td>

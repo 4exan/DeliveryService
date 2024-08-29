@@ -15,14 +15,11 @@ export default class UserService {
     }
   }
 
-  static async registration(userData, token) {
+  static async registration(userData) {
     try {
       const response = await axios.post(
         `${UserService.BASE_URL}/auth/registration`,
-        userData,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+        userData
       );
       return response.data;
     } catch (err) {

@@ -8,6 +8,8 @@ import UserService from "./components/service/UserService";
 import UpdateUser from "./components/userspage/UpdateUser";
 import UserManagementPage from "./components/userspage/UserManagementPage";
 import ProfilePage from "./components/userspage/ProfilePage";
+import HomePage from "./components/publicpage/HomePage";
+import Dashboard from "./components/userspage/Dashboard";
 
 export default function App() {
   return (
@@ -16,13 +18,18 @@ export default function App() {
         <Navbar />
         <div className="content">
           <Routes>
-            <Route exact path="/" element={<LoginPage />} />
+            <Route exact path="/" element={<HomePage />} />
             <Route exact path="/login" element={<LoginPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/registration" element={<RegistrationPage />} />
+            {UserService.isAuthenticated() && (
+              <>
+                <Route path="/user/dashboard" element={<Dashboard />} />
+                <Route path="/user/profile" element={<ProfilePage />} />
+              </>
+            )}
             {/* Check if user is authenticated and admin before rendering admin-only routes */}
             {UserService.adminOnly() && (
               <>
-                <Route path="/register" element={<RegistrationPage />} />
                 <Route
                   path="/admin/user-management"
                   element={<UserManagementPage />}
@@ -30,7 +37,7 @@ export default function App() {
                 <Route path="/update-user/:userId" element={<UpdateUser />} />
               </>
             )}
-            <Route path="*" element={<Navigate to="/login" />} />‰
+            <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         </div>
         <FooterComponent />

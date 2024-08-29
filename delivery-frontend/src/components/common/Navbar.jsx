@@ -14,16 +14,31 @@ export default function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className="navbar">
       <ul>
         {!isAuthenticated && (
           <li>
             <Link to="/">Delivery Service</Link>
           </li>
         )}
+        {!isAuthenticated && (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        )}
+        {!isAuthenticated && (
+          <li>
+            <Link to="/registration">Registration</Link>
+          </li>
+        )}
         {isAuthenticated && (
           <li>
-            <Link to="/profile">Profile</Link>
+            <Link to="/user/profile">Profile</Link>
+          </li>
+        )}
+        {isAuthenticated && (
+          <li>
+            <Link to="/user/dashboard">Dashboard</Link>
           </li>
         )}
         {isAdmin && (

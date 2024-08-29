@@ -56,46 +56,64 @@ function UpdateUser() {
   };
 
   return (
-    <div className="auth-container">
+    <div className="form-container">
       <h2>Update User</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Name:</label>
+        <div className="form-item">
+          <lable>Username:</lable>
+          <br></br>
           <input
             type="text"
-            name="name"
+            value={userData.username}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-item">
+          <lable>Full name:</lable>
+          <br></br>
+          <input
+            type="text"
             value={userData.name}
             onChange={handleInputChange}
+            required
           />
         </div>
-        <div className="form-group">
-          <label>Email:</label>
+        <div className="form-item">
+          <lable>Email:</lable>
+          <br></br>
           <input
             type="email"
-            name="email"
             value={userData.email}
             onChange={handleInputChange}
+            required
           />
         </div>
-        <div className="form-group">
-          <label>Role:</label>
+        <div className="form-item">
+          <lable>Phone:</lable>
+          <br></br>
           <input
             type="text"
-            name="role"
+            value={userData.phone}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-item">
+          <lable>Role:</lable>
+          <br></br>
+          <input
+            type="text"
             value={userData.role}
             onChange={handleInputChange}
+            required
           />
         </div>
-        <div className="form-group">
-          <label>City:</label>
-          <input
-            type="text"
-            name="city"
-            value={userData.city}
-            onChange={handleInputChange}
-          />
+        <div className="form-item">
+          <button className="action-btn" type="submit">
+            Update
+          </button>
         </div>
-        <button type="submit">Update</button>
       </form>
     </div>
   );
