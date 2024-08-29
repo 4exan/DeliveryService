@@ -2,6 +2,8 @@ package ua.kusakabe.delivery.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import ua.kusakabe.delivery.dto.ReqRes;
 import ua.kusakabe.delivery.entity.User;
@@ -13,7 +15,7 @@ public class UserManagementController {
     @Autowired
     private UserManagementService userManagementService;
 
-    @PostMapping("/auth/register")
+    @PostMapping("/auth/registration")
     public ResponseEntity<ReqRes> register(@RequestBody ReqRes req) {
         return ResponseEntity.ok(userManagementService.registerUser(req));
     }
@@ -46,6 +48,14 @@ public class UserManagementController {
     @DeleteMapping("/admin/delete/{userId}")
     public ResponseEntity<ReqRes> deleteUser(@PathVariable int userId) {
         return ResponseEntity.ok(userManagementService.deleteUserById(userId));
+    }
+
+    @GetMapping("/cred/get-profile")
+    public ResponseEntity<ReqRes> getProfile() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        ReqRes res = userManagementService.getMyInfo(username);
+        return ResponseEntity.status(res.getStatusCode()).body(res);
     }
 
 }

@@ -32,6 +32,7 @@ public class UserManagementService {
             User user = new User();
             user.setUsername(registrationRequest.getUsername());
             user.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
+            user.setName(registrationRequest.getName());
             user.setEmail(registrationRequest.getEmail());
             user.setPhone(registrationRequest.getPhone());
             user.setRole(registrationRequest.getRole());
@@ -61,6 +62,7 @@ public class UserManagementService {
             var refreshToken = jwtUtils.generateRefreshToken(new HashMap<>(), user);
             res.setStatusCode(200);
             res.setToken(jwt);
+            res.setRole(user.getRole());
             res.setRefreshToken(refreshToken);
             res.setExpirationTime("24Hrs");
             res.setMessage("User logged in successfully");
@@ -159,6 +161,7 @@ public class UserManagementService {
             if (user.isPresent()) {
                 User existingUser = user.get();
                 existingUser.setUsername(updateRequest.getUsername());
+                existingUser.setName(updateRequest.getName());
                 existingUser.setEmail(updateRequest.getEmail());
                 existingUser.setPhone(updateRequest.getPhone());
                 existingUser.setRole(updateRequest.getRole());

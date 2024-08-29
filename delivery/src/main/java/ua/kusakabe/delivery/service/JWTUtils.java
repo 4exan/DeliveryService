@@ -20,7 +20,7 @@ public class JWTUtils {
     private static final long EXPIRATION_TIME = 86400000;
 
     public JWTUtils() {
-        String secretString = "super-long-and-super-secure-and-super-secret-string";
+        String secretString = "ASD45A9FGW41RQ968SFD41AS65S1F9WE8GW4E9G81E978Y7";
         byte[] keyByte = Base64.getDecoder().decode(secretString.getBytes(StandardCharsets.UTF_8));
         this.secretKey = new SecretKeySpec(keyByte, "HmacSHA256");
     }
