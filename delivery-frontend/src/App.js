@@ -10,8 +10,11 @@ import UserManagementPage from "./components/userspage/UserManagementPage";
 import ProfilePage from "./components/userspage/ProfilePage";
 import HomePage from "./components/publicpage/HomePage";
 import Dashboard from "./components/userspage/Dashboard";
+import { useAuth } from "./components/context/AuthContext.jsx";
 
 export default function App() {
+  const { isAuthenticated, isAdmin } = useAuth();
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -21,14 +24,14 @@ export default function App() {
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/login" element={<LoginPage />} />
             <Route path="/registration" element={<RegistrationPage />} />
-            {UserService.isAuthenticated() && (
+            {isAuthenticated && (
               <>
                 <Route path="/user/dashboard" element={<Dashboard />} />
                 <Route path="/user/profile" element={<ProfilePage />} />
               </>
             )}
             {/* Check if user is authenticated and admin before rendering admin-only routes */}
-            {UserService.adminOnly() && (
+            {isAdmin && (
               <>
                 <Route
                   path="/admin/user-management"

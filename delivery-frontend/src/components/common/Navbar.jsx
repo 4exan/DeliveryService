@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import UserService from "../service/UserService";
+import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
-  const isAuthenticated = UserService.isAuthenticated();
-  const isAdmin = UserService.isAdmin();
+  // const isAuthenticated = UserService.isAuthenticated();
+  // const isAdmin = UserService.isAdmin();
+
+  // const [isAuthenticated, setIsAuthenticated] = useState(
+  //   UserService.isAuthenticated()
+  // );
+  // const [isAdmin, setIsAdmin] = useState(UserService.isAdmin());
+
+  const { isAuthenticated, isAdmin, logout } = useAuth();
 
   const handleLogout = () => {
     const confirmDelete = window.confirm("Are you sure you want to logout?");
     if (confirmDelete) {
-      UserService.logout();
+      logout();
     }
   };
 
