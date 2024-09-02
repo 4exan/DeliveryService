@@ -1,11 +1,17 @@
 import { useState } from "react";
 import Packages from "../common/dashboardPanel/Packages";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const [page, setPage] = useState("incomming");
 
   function handleSetPage(e) {
     e.preventDefault();
+  }
+
+  function handleClickInvoice() {
+    navigate("/package/create");
   }
 
   return (
@@ -13,7 +19,7 @@ export default function Dashboard() {
       <div class="sidebar">
         <ul class="sidebar-list">
           <li class="invoice-btn">
-            <a href="/package/create">Create invoice</a>
+            <button onClick={handleClickInvoice}>Create invoice</button>
           </li>
           <li class="sidebar-list-item">
             My package

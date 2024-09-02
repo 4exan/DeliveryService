@@ -200,3 +200,72 @@ code {
 .page-title::first-letter {
   text-transform: capitalize;
 }
+
+.table-container table {
+  border: 1px solid grey;
+  border-collapse: collapse;
+}
+
+.table-container tbody {
+  text-align: center;
+}
+
+.table-container th {
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+.main-container {
+  display: flex;
+  margin-top: 50px;
+}
+
+.main-item {
+  border: 1px solid grey;
+  height: auto;
+  width: 33.3%;
+}
+
+.main-item p {
+  padding: 10px;
+}
+
+.main-item h2 {
+  padding: 10px;
+}
+
+.wide {
+  display: flex;
+  width: 80%;
+}
+
+.package-form-container {
+  border: 1px solid grey;
+  margin-top: 50px;
+  display: inline;
+}
+
+.package-form-grid {
+  /* border: 1px solid red; */
+  width: auto;
+  text-align: center;
+}
+
+.center {
+  width: auto;
+  margin-left: 50%;
+  margin-top: 25px;
+  text-align: center;
+}
+
+/* .sender {
+  border: 1px solid red;
+}
+
+.package {
+  border: 1px solid blue;
+}
+
+.recipient {
+  border: 1px solid green;
+} */
