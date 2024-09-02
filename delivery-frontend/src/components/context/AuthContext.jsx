@@ -4,10 +4,8 @@ import UserService from "../service/UserService";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    UserService.isAuthenticated()
-  );
-  const [isAdmin, setIsAdmin] = useState(UserService.isAdmin());
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const login = () => {
     setIsAuthenticated(true);

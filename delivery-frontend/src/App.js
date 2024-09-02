@@ -11,6 +11,7 @@ import ProfilePage from "./components/userspage/ProfilePage";
 import HomePage from "./components/publicpage/HomePage";
 import Dashboard from "./components/userspage/Dashboard";
 import { useAuth } from "./components/context/AuthContext.jsx";
+import CreateInvoice from "./components/userspage/CreateInvoice.jsx";
 
 export default function App() {
   const { isAuthenticated, isAdmin } = useAuth();
@@ -32,6 +33,7 @@ export default function App() {
                   path="/package/my-package/incoming"
                   element={<ProfilePage />}
                 />
+                <Route path="/package/create" element={<CreateInvoice />} />
               </>
             )}
             {/* Check if user is authenticated and admin before rendering admin-only routes */}
