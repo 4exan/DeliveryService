@@ -12,6 +12,8 @@ import HomePage from "./components/publicpage/HomePage";
 import Dashboard from "./components/userspage/Dashboard";
 import { useAuth } from "./components/context/AuthContext.jsx";
 import CreateInvoice from "./components/userspage/CreateInvoice.jsx";
+import PackageSearch from "./components/common/adminpage/PackageSearch.jsx";
+import PackageInfo from "./components/common/adminpage/PackageSearch.jsx";
 
 export default function App() {
   const { isAuthenticated, isAdmin } = useAuth();
@@ -42,6 +44,11 @@ export default function App() {
                 <Route
                   path="/admin/user-management"
                   element={<UserManagementPage />}
+                />
+                <Route path="/admin/package" element={<PackageSearch />} />
+                <Route
+                  path="/admin/package/:packageId"
+                  element={<PackageInfo />}
                 />
                 <Route path="/update-user/:userId" element={<UpdateUser />} />
               </>

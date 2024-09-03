@@ -19,7 +19,9 @@ export default function Dashboard() {
       <div class="sidebar">
         <ul class="sidebar-list">
           <li class="invoice-btn">
-            <button onClick={handleClickInvoice}>Create invoice</button>
+            <button className="action-btn" onClick={handleClickInvoice}>
+              Create invoice
+            </button>
           </li>
           <li class="sidebar-list-item">
             My package

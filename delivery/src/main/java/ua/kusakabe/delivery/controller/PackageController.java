@@ -1,6 +1,7 @@
 package ua.kusakabe.delivery.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,6 +38,9 @@ public class PackageController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
        PackageRR response = packageService.getMyPackage(username);
+       if(response.getPackageList().isEmpty()){
+           return ResponseEntity.ok(response);
+       }
        return ResponseEntity.ok(response);
     }
 

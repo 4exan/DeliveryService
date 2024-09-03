@@ -132,7 +132,7 @@ public class PackageService {
 
         try{
             List<Package> packages = packageRepository.findByCreatorUsername(username);
-            if(!packages.isEmpty()){
+            if(packages != null){
                 response.setPackageList(packages);
                 response.setStatusCode(200);
                 response.setMessage("User packages loaded successfully!");

@@ -3,6 +3,18 @@ import axios from "axios";
 export default class PackageService {
   static BASE_URL = "http://localhost:8080";
 
+  static async getPackageById(id, token) {
+    try {
+      const response = await axios.get(
+        `${PackageService.BASE_URL}/package/get/${id}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async getUserPackage(token) {
     try {
       const response = await axios.get(
@@ -12,8 +24,8 @@ export default class PackageService {
         }
       );
       return response.data;
-    } catch (err) {
-      throw err;
+    } catch (error) {
+      throw error;
     }
   }
 
@@ -25,8 +37,8 @@ export default class PackageService {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       return response.data;
-    } catch (err) {
-      throw err;
+    } catch (error) {
+      throw error;
     }
   }
 }
