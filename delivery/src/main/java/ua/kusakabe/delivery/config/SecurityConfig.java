@@ -33,8 +33,8 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request.requestMatchers("/auth/**", "/public/**").permitAll()
                         .requestMatchers("/admin/**").hasAnyAuthority("ADMIN")
-                        .requestMatchers("/user/**", "/package/**").hasAnyAuthority("USER")
-                        .requestMatchers("/cred/**", "/department/**").hasAnyAuthority("ADMIN", "USER")
+                        .requestMatchers("/user/**").hasAnyAuthority("USER")
+                        .requestMatchers("/cred/**", "/department/**", "/package/**").hasAnyAuthority("ADMIN", "USER")
                         .anyRequest().authenticated()).sessionManagement(manager -> manager.sessionCreationPolicy(
                         SessionCreationPolicy.STATELESS)).authenticationProvider(authenticationProvider()).addFilterBefore(
                         jwtAuthFilter, UsernamePasswordAuthenticationFilter.class

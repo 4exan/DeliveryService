@@ -8,6 +8,10 @@ export default function Packages({ currentPage }) {
     fetchUserPackages();
   }, []);
 
+  useEffect(() => {
+    packages.filter((upackage) => upackage.status === `${currentPage}`);
+  }, []);
+
   const fetchUserPackages = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -19,6 +23,18 @@ export default function Packages({ currentPage }) {
       setPackages(error.status);
     }
   };
+
+  if (packages.length === 0) {
+    return (
+      <div className="dash-packages">
+        <h2 className="page-title">{currentPage}</h2>
+        <div className="table-container center">
+          <h2 className="center">Currently no packages!</h2>
+          <button className="action-btn center">Create new package!</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="dash-packages">
@@ -40,20 +56,22 @@ export default function Packages({ currentPage }) {
             </tr>
           </thead>
           <tbody>
-            {packages.map((upackage) => (
-              <tr>
-                <td>{upackage.id}</td>
-                <td>{upackage.senderDepartment.number}</td>
-                <td>{upackage.packageType}</td>
-                <td>{upackage.packageDescription}</td>
-                <td>{upackage.packagePrice}</td>
-                <td>{upackage.packageParams}</td>
-                <td>{upackage.recipientName}</td>
-                <td>{upackage.recipientPhone}</td>
-                <td>{upackage.recipientDepartment.number}</td>
-                <td>{upackage.status}</td>
-              </tr>
-            ))}
+            {packages
+              .filter((upackage) => upackage.status === `${currentPage}`)
+              .map((upackage) => (
+                <tr>
+                  <td>{upackage.id}</td>
+                  <td>{upackage.senderDepartment.number}</td>
+                  <td>{upackage.packageType}</td>
+                  <td>{upackage.packageDescription}</td>
+                  <td>{upackage.packagePrice}</td>
+                  <td>{upackage.packageParams}</td>
+                  <td>{upackage.recipientName}</td>
+                  <td>{upackage.recipientPhone}</td>
+                  <td>{upackage.recipientDepartment.number}</td>
+                  <td>{upackage.status}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

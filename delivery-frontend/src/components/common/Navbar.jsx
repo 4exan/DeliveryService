@@ -54,6 +54,11 @@ export default function Navbar() {
             <Link to="/admin/user-management">User Management</Link>
           </li>
         )}
+        {isAdmin && (
+          <li>
+            <Link to="/admin/package">Package info</Link>
+          </li>
+        )}
         {isAuthenticated && (
           <li>
             <Link to="/" onClick={handleLogout}>
