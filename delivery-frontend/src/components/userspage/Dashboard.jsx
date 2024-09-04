@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const [page, setPage] = useState("incomming");
+  const [page, setPage] = useState("active");
 
   function handleSetPage(e) {
     e.preventDefault();
@@ -15,54 +15,46 @@ export default function Dashboard() {
   }
 
   return (
-    <div class="dashboard">
-      <div class="sidebar">
-        <ul class="sidebar-list">
-          <li class="invoice-btn">
+    <div className="dashboard">
+      <div className="sidebar">
+        <ul className="sidebar-list">
+          <li className="invoice-btn">
             <button className="action-btn" onClick={handleClickInvoice}>
               Create invoice
             </button>
           </li>
-          <li class="sidebar-list-item">
+          <li className="sidebar-list-item">
             My package
             <ul>
-              <li class="sidebar-list-item">
+              <li className="sidebar-list-item">
                 <button
                   onClick={(e) => setPage(e.target.value)}
-                  value={`incomming`}
+                  value={`active`}
                 >
-                  Incomming
+                  Active
                 </button>
               </li>
-              <li class="sidebar-list-item">
+              <li className="sidebar-list-item">
                 <button
                   onClick={(e) => setPage(e.target.value)}
-                  value={`outcomming`}
+                  value={`received`}
                 >
-                  Outcomming
-                </button>
-              </li>
-              <li class="sidebar-list-item">
-                <button
-                  onClick={(e) => setPage(e.target.value)}
-                  value={`archive`}
-                >
-                  Archive
+                  Received
                 </button>
               </li>
             </ul>
           </li>
-          <li class="sidebar-list-item">Register</li>
-          <li class="sidebar-list-item">Money transfer</li>
-          <li class="sidebar-list-item">Fulfillment</li>
-          <li class="sidebar-list-item">Services</li>
-          <li class="sidebar-list-item">Contacts</li>
-          <li class="sidebar-list-item">Reporting</li>
-          <li class="sidebar-list-item">Help</li>
-          <li class="sidebar-list-item">Settings</li>
+          <li className="sidebar-list-item">Register</li>
+          <li className="sidebar-list-item">Money transfer</li>
+          <li className="sidebar-list-item">Fulfillment</li>
+          <li className="sidebar-list-item">Services</li>
+          <li className="sidebar-list-item">Contacts</li>
+          <li className="sidebar-list-item">Reporting</li>
+          <li className="sidebar-list-item">Help</li>
+          <li className="sidebar-list-item">Settings</li>
         </ul>
       </div>
-      <div class="main-panel">
+      <div className="main-panel">
         <Packages currentPage={page} />
       </div>
     </div>

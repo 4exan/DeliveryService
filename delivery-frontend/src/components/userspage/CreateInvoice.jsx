@@ -42,7 +42,7 @@ export default function CreateInvoice() {
         recipient_name: "",
         recipient_phone: "",
         recipient_department: 0,
-        status: "incomming",
+        status: "CREATED",
       });
       alert("Package created successfully!");
       navigate("/user/dashboard");
