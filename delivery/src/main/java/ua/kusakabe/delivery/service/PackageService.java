@@ -177,11 +177,45 @@ public class PackageService {
         return response;
     }
 
-    public PackageRR setNewPackageStatus() {
+    public PackageRR setNextPackageStatus(long packageId, PackageRR request, String username) {
         PackageRR response = new PackageRR();
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
         try {
-
+            Package oldPackage = packageRepository.findById(packageId).orElseThrow(() -> new RuntimeException("Package not found"));
+            User worker = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Worker not found!"));
+            switch (request.getStatus()) {
+                case "CREATED":
+                    oldPackage.setStatus("READY-TO-DELIVER");
+                    oldPackage.setWhoReceive(worker);
+                    oldPackage.setDateReceive(timeStamp);
+                    break;
+                case "READY-TO-DELIVER":
+                    oldPackage.setStatus("DELIVERY-IN-PROGRESS");
+                    oldPackage.setWhoLoad(worker);
+                    oldPackage.setDateLoad(timeStamp);
+                    break;
+                case "DELIVERY-IN-PROGRESS":
+                    oldPackage.setStatus("DELIVERED");
+                    oldPackage.setWhoUnload(worker);
+                    oldPackage.setDateUnload(timeStamp);
+                    break;
+                case "DELIVERED":
+                    oldPackage.setStatus("RECEIVED");
+                    oldPackage.setWhoGave(worker);
+                    oldPackage.setDateGave(timeStamp);
+                    break;
+                default:
+                    response.setStatusCode(404);
+                    response.setMessage("Error has occurred!");
+                    break;
+            }
+            Package savedPackage = packageRepository.save(oldPackage);
+            if (savedPackage.getId() > 0) {
+                response.setStatusCode(200);
+                response.setMessage("Status successfully changed!");
+                response.setUpackage(savedPackage);
+            }
         } catch (Exception e) {
             response.setStatusCode(500);
             response.setMessage(e.getMessage());

@@ -28,13 +28,13 @@ public class PackageRR {
     private String recipient_phone;
     private String recipient_department;
     private String status;
-    private User whoReceive;
+    private String whoReceive;
     private String dateReceive;
-    private User whoLoad;
+    private String whoLoad;
     private String dateLoad;
-    private User whoUnload;
+    private String whoUnload;
     private String dateUnload;
-    private User whoGave;
+    private String whoGave;
     private String dateGave;
 
     List<Package> packageList;

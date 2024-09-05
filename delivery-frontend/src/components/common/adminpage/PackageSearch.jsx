@@ -18,6 +18,8 @@ export default function PackageInfo() {
     setUPackage({ id: 0 });
   };
 
+  const handleEdit = async () => {};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,7 +41,11 @@ export default function PackageInfo() {
         <div
           className={`modal-background ${modalShow === true ? "" : "hidden"}`}
         ></div>
-        <ConfirmModal show={modalShow} onHide={() => setModalShow(false)} />
+        <ConfirmModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          userPackage={upackage}
+        />
         <div className="package-info-container">
           <form onSubmit={handleBack}>
             <input type="submit" className="action-btn" value={`Back`} />
@@ -70,7 +76,12 @@ export default function PackageInfo() {
             </div>
           </div>
           <div className="button-panel">
-            <button className="action-btn ml10 red">Edit</button>
+            <button
+              className="action-btn ml10 red"
+              onClick={() => handleEdit()}
+            >
+              Edit
+            </button>
             <button
               className="action-btn ml10 green"
               onClick={() => setModalShow(true)}

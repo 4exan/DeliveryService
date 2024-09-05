@@ -1,7 +1,23 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import PackageService from "../service/PackageService";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ConfirmModal(props) {
+  const [packageData, setPackageData] = useState({});
+  const navigate = useNavigate();
+
+  const handleConfirm = () => {
+    PackageService.changePackageStatus(
+      props.userPackage.id,
+      props.userPackage,
+      localStorage.getItem("token")
+    );
+    console.log(props.userPackage);
+    navigate(`/user/profile`);
+  };
+
   return (
     <div>
       <Modal
@@ -27,7 +43,12 @@ export default function ConfirmModal(props) {
           <button className="action-btn red" onClick={props.onHide}>
             Cancel
           </button>
-          <button className="action-btn green ml10" onClick={}>Change</button>
+          <button
+            className="action-btn green ml10"
+            onClick={() => handleConfirm()}
+          >
+            Change
+          </button>
         </Modal.Footer>
       </Modal>
     </div>

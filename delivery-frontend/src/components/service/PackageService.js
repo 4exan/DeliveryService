@@ -42,10 +42,24 @@ export default class PackageService {
     }
   }
 
-  static async changePackageStatus(id, token) {
+  static async changePackage(id, packageData, token) {
     try {
-      const response = await axios.get(
-        `${PackageService.BASE_URL}/package/get/${id}`,
+      const response = await axios.put(
+        `${PackageService.BASE_URL}/package/edit/${id}`,
+        packageData,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async changePackageStatus(id, packageData, token) {
+    try {
+      const response = await axios.put(
+        `${PackageService.BASE_URL}/package/status/${id}`,
+        packageData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       return response.data;
