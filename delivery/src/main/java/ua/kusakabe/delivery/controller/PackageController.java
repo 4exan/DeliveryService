@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import ua.kusakabe.delivery.dto.PackageRR;
+import ua.kusakabe.delivery.dto.UserRR;
 import ua.kusakabe.delivery.service.PackageService;
 
 @RestController
@@ -24,6 +25,11 @@ public class PackageController {
     @GetMapping("/get/{id}")
     public ResponseEntity<PackageRR> getAllPackages(@PathVariable long id) {
         return ResponseEntity.ok(packageService.getPackageById(id));
+    }
+
+    @PutMapping("/edit/{packageId}")
+    public ResponseEntity<PackageRR> editPackage(@PathVariable long packageId, @RequestBody PackageRR req) {
+        return ResponseEntity.ok(packageService.editPackage(packageId, req));
     }
 
     @PostMapping("/new")

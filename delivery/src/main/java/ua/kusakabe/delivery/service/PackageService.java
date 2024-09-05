@@ -147,6 +147,36 @@ public class PackageService {
         return response;
     }
 
+    public PackageRR editPackage(long packageId, PackageRR request) {
+        PackageRR response = new PackageRR();
+
+        try {
+            Department senderDepartment = departmentRepository.findByNumber(request.getSender_department());
+            Department recipientDepartment = departmentRepository.findByNumber(request.getRecipient_department());
+            Package oldPackage = packageRepository.findById(packageId).orElseThrow(() -> new RuntimeException("Package not found"));
+            oldPackage.setSenderName(request.getSender_name());
+            oldPackage.setSenderPhone(request.getSender_phone());
+            oldPackage.setSenderDepartment(senderDepartment);
+            oldPackage.setPackageType(request.getPackage_type());
+            oldPackage.setPackageDescription(request.getPackage_description());
+            oldPackage.setPackagePrice(request.getPackage_price());
+            oldPackage.setPackageParams(request.getPackage_params());
+            oldPackage.setRecipientName(request.getRecipient_name());
+            oldPackage.setRecipientPhone(request.getRecipient_phone());
+            oldPackage.setRecipientDepartment(recipientDepartment);
+            Package savedPackage = packageRepository.save(oldPackage);
+            if (savedPackage.getId() > 0) {
+                response.setStatusCode(200);
+                response.setMessage("Package with id: " + packageId + " updated successfully!");
+                response.setUpackage(savedPackage);
+            }
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage(e.getMessage());
+        }
+        return response;
+    }
+
     public PackageRR setNewPackageStatus() {
         PackageRR response = new PackageRR();
 
