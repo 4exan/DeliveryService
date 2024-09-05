@@ -1,0 +1,50 @@
+/* MARGIN */
+.ml5 {
+  margin-left: 5px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr15 {
+  margin-right: 15px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+/*COLOR*/
+
+.red {
+  background-color: #ff2e2e;
+}
+
+.green {
+  background-color: #00d100;
+}
+
+.tred {
+  color: #ff2e2e;
+}
+
+.tgreen {
+  color: #00d100;
+}

@@ -89,9 +89,9 @@ public class PackageService {
 
         try {
             Package newPackage = new Package();
-            Department senderDepartment  = departmentRepository.findByNumber(request.getSender_department());
+            Department senderDepartment = departmentRepository.findByNumber(request.getSender_department());
             Department recipientDepartment = departmentRepository.findByNumber(request.getRecipient_department());
-            if(senderDepartment == null && recipientDepartment == null) {
+            if (senderDepartment == null && recipientDepartment == null) {
                 response.setStatusCode(400);
                 response.setMessage("Sender department or recipient department not found");
                 response.setUpackage(request.getUpackage());
@@ -127,24 +127,100 @@ public class PackageService {
         return response;
     }
 
-    public PackageRR getMyPackage(String username){
+    public PackageRR getMyPackage(String username) {
         PackageRR response = new PackageRR();
 
-        try{
+        try {
             List<Package> packages = packageRepository.findByCreatorUsername(username);
-            if(packages != null){
+            if (packages != null) {
                 response.setPackageList(packages);
                 response.setStatusCode(200);
                 response.setMessage("User packages loaded successfully!");
-            }else{
+            } else {
                 response.setStatusCode(404);
                 response.setMessage("No packages found");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             response.setStatusCode(500);
             response.setError(e.getMessage());
         }
         return response;
+    }
+
+    public PackageRR editPackage(long packageId, PackageRR request) {
+        PackageRR response = new PackageRR();
+
+        try {
+            Department senderDepartment = departmentRepository.findByNumber(request.getSender_department());
+            Department recipientDepartment = departmentRepository.findByNumber(request.getRecipient_department());
+            Package oldPackage = packageRepository.findById(packageId).orElseThrow(() -> new RuntimeException("Package not found"));
+            oldPackage.setSenderName(request.getSender_name());
+            oldPackage.setSenderPhone(request.getSender_phone());
+            oldPackage.setSenderDepartment(senderDepartment);
+            oldPackage.setPackageType(request.getPackage_type());
+            oldPackage.setPackageDescription(request.getPackage_description());
+            oldPackage.setPackagePrice(request.getPackage_price());
+            oldPackage.setPackageParams(request.getPackage_params());
+            oldPackage.setRecipientName(request.getRecipient_name());
+            oldPackage.setRecipientPhone(request.getRecipient_phone());
+            oldPackage.setRecipientDepartment(recipientDepartment);
+            Package savedPackage = packageRepository.save(oldPackage);
+            if (savedPackage.getId() > 0) {
+                response.setStatusCode(200);
+                response.setMessage("Package with id: " + packageId + " updated successfully!");
+                response.setUpackage(savedPackage);
+            }
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage(e.getMessage());
+        }
+        return response;
+    }
+
+    public PackageRR setNextPackageStatus(long packageId, PackageRR request, String username) {
+        PackageRR response = new PackageRR();
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+
+        try {
+            Package oldPackage = packageRepository.findById(packageId).orElseThrow(() -> new RuntimeException("Package not found"));
+            User worker = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Worker not found!"));
+            switch (request.getStatus()) {
+                case "CREATED":
+                    oldPackage.setStatus("READY-TO-DELIVER");
+                    oldPackage.setWhoReceive(worker);
+                    oldPackage.setDateReceive(timeStamp);
+                    break;
+                case "READY-TO-DELIVER":
+                    oldPackage.setStatus("DELIVERY-IN-PROGRESS");
+                    oldPackage.setWhoLoad(worker);
+                    oldPackage.setDateLoad(timeStamp);
+                    break;
+                case "DELIVERY-IN-PROGRESS":
+                    oldPackage.setStatus("DELIVERED");
+                    oldPackage.setWhoUnload(worker);
+                    oldPackage.setDateUnload(timeStamp);
+                    break;
+                case "DELIVERED":
+                    oldPackage.setStatus("RECEIVED");
+                    oldPackage.setWhoGave(worker);
+                    oldPackage.setDateGave(timeStamp);
+                    break;
+                default:
+                    response.setStatusCode(404);
+                    response.setMessage("Error has occurred!");
+                    break;
+            }
+            Package savedPackage = packageRepository.save(oldPackage);
+            if (savedPackage.getId() > 0) {
+                response.setStatusCode(200);
+                response.setMessage("Status successfully changed!");
+                response.setUpackage(savedPackage);
+            }
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage(e.getMessage());
+        }
+        return null;
     }
 
 }

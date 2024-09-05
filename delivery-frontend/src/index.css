@@ -10,6 +10,10 @@ code {
     monospace;
 }
 
+.active {
+  color: black;
+}
+
 .action-btn {
   border: none;
   border-radius: 3px;
@@ -22,6 +26,8 @@ code {
 
   width: auto;
   height: 25px;
+
+  cursor: pointer;
 }
 
 .action-btn a {
@@ -210,18 +216,32 @@ code {
   text-transform: capitalize;
 }
 
-.table-container table {
+.table {
   border: 1px solid grey;
-  border-collapse: collapse;
-}
+  width: 1200px;
+  height: auto;
 
-.table-container tbody {
+  border-collapse: collapse;
+
   text-align: center;
 }
 
-.table-container th {
+.table th {
+  height: 25px;
+  width: 50px;
+
   border: 1px solid grey;
-  padding: 10px;
+}
+
+.table td {
+  height: 25px;
+  width: 50px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  border: 1px solid grey;
 }
 
 .main-container {
@@ -266,6 +286,75 @@ code {
   text-align: center;
 }
 
+.package-info-container {
+  padding: 10px;
+
+  border-radius: 10px;
+
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid grey;
+
+  width: 80%;
+  height: 70%;
+}
+
+.package-info-container span {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+  margin-left: 25px;
+}
+
+.package-info-grid {
+  display: flex;
+}
+
+.package-info-child {
+  width: 30%;
+  height: 300px;
+  margin: auto;
+}
+
+.button-panel {
+  margin: 10px;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid grey;
+
+  padding: 20px;
+
+  border-radius: 25px;
+
+  background-color: white;
+
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.modal-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0px;
+  height: 0px;
+  background-color: rgba(0, 0, 0, 0);
+}
 /* .sender {
   border: 1px solid red;
 }
