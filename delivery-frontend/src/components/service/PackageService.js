@@ -41,4 +41,16 @@ export default class PackageService {
       throw error;
     }
   }
+
+  static async changePackageStatus(id, token) {
+    try {
+      const response = await axios.get(
+        `${PackageService.BASE_URL}/package/get/${id}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

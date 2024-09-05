@@ -2,11 +2,9 @@ package ua.kusakabe.delivery.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
-import ua.kusakabe.delivery.entity.Department;
 import ua.kusakabe.delivery.entity.Package;
+import ua.kusakabe.delivery.entity.User;
 
 import java.util.List;
 
@@ -30,6 +28,14 @@ public class PackageRR {
     private String recipient_phone;
     private String recipient_department;
     private String status;
+    private User whoReceive;
+    private String dateReceive;
+    private User whoLoad;
+    private String dateLoad;
+    private User whoUnload;
+    private String dateUnload;
+    private User whoGave;
+    private String dateGave;
 
     List<Package> packageList;
     private Package upackage;

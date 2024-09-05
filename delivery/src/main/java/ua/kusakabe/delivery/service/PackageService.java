@@ -89,9 +89,9 @@ public class PackageService {
 
         try {
             Package newPackage = new Package();
-            Department senderDepartment  = departmentRepository.findByNumber(request.getSender_department());
+            Department senderDepartment = departmentRepository.findByNumber(request.getSender_department());
             Department recipientDepartment = departmentRepository.findByNumber(request.getRecipient_department());
-            if(senderDepartment == null && recipientDepartment == null) {
+            if (senderDepartment == null && recipientDepartment == null) {
                 response.setStatusCode(400);
                 response.setMessage("Sender department or recipient department not found");
                 response.setUpackage(request.getUpackage());
@@ -127,24 +127,36 @@ public class PackageService {
         return response;
     }
 
-    public PackageRR getMyPackage(String username){
+    public PackageRR getMyPackage(String username) {
         PackageRR response = new PackageRR();
 
-        try{
+        try {
             List<Package> packages = packageRepository.findByCreatorUsername(username);
-            if(packages != null){
+            if (packages != null) {
                 response.setPackageList(packages);
                 response.setStatusCode(200);
                 response.setMessage("User packages loaded successfully!");
-            }else{
+            } else {
                 response.setStatusCode(404);
                 response.setMessage("No packages found");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             response.setStatusCode(500);
             response.setError(e.getMessage());
         }
         return response;
+    }
+
+    public PackageRR setNewPackageStatus() {
+        PackageRR response = new PackageRR();
+
+        try {
+
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage(e.getMessage());
+        }
+        return null;
     }
 
 }

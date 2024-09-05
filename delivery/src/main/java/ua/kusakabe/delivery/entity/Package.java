@@ -30,5 +30,21 @@ public class Package {
     @JoinColumn(name = "recipient_department_number")
     private Department recipientDepartment;
     private String status;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "who_receive", referencedColumnName = "id")
+    private User whoReceive;
+    private String dateReceive;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "who_load", referencedColumnName = "id")
+    private User whoLoad;
+    private String dateLoad;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "who_unload", referencedColumnName = "id")
+    private User whoUnload;
+    private String dateUnload;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "who_gave", referencedColumnName = "id")
+    private User whoGave;
+    private String dateGave;
 
 }
