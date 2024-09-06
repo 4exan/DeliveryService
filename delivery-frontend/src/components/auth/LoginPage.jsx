@@ -34,8 +34,8 @@ export default function LoginPage() {
 
   return (
     <div className="form-container">
-      <h2>Login</h2>
-      {error && <p className="error-massage">{error}</p>}
+      <h2 className="text-center text-3xl font-semibold">Login</h2>
+      {error && <p className="text-red-500 text-center">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-item">
           <label>Username:</label>
@@ -46,7 +46,7 @@ export default function LoginPage() {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="form-item">
+        <div className="form-item ">
           <label>Password:</label>
           <br></br>
           <input
@@ -55,8 +55,11 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className="form-item">
-          <button className="btn action-btn" type="submit">
+        <div className="ml-10 mb-5">
+          <button
+            className="bg-red-600 text-white border-none rounded-lg w-1/4 m-auto"
+            type="submit"
+          >
             Login
           </button>
         </div>

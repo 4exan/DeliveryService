@@ -22,8 +22,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar tred">
-      <ul>
+    <nav className="navbar">
+      <ul className="text-center mt-3">
         {!isAuthenticated && (
           <li>
             <Link to="/">Delivery Service</Link>
