@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import PackageService from "../../service/PackageService";
+import { useNavigate } from "react-router-dom";
 
 export default function Packages({ currentPage }) {
   const [packages, setPackages] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchUserPackages();
@@ -12,6 +14,10 @@ export default function Packages({ currentPage }) {
     if (currentPage === "active")
       packages.filter((upackage) => upackage.status !== `archive`);
   }, []);
+
+  function handleClickInvoice() {
+    navigate("/package/create");
+  }
 
   const fetchUserPackages = async () => {
     try {
@@ -31,7 +37,9 @@ export default function Packages({ currentPage }) {
         <h2 className="page-title">{currentPage}</h2>
         <div className="table-container center">
           <h2 className="center">Currently no packages!</h2>
-          <button className="action-btn center">Create new package!</button>
+          <button className="action-btn center" onClick={handleClickInvoice}>
+            Create new package!
+          </button>
         </div>
       </div>
     );

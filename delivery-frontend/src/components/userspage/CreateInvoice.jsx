@@ -54,8 +54,8 @@ export default function CreateInvoice() {
 
   return (
     <div className="package-form-container">
-      <h2>Create package:</h2>
       <form onSubmit={handleSubmit}>
+        <h3>Sender info:</h3>
         <div className="package-form-grid">
           <div className="package-form-item sender">
             <lable>Sender name:</lable>
@@ -91,6 +91,7 @@ export default function CreateInvoice() {
             />
           </div>
         </div>
+        <h3>Package info:</h3>
         <div className="package-form-grid">
           <div className="package-form-item package">
             <lable>Package type:</lable>
@@ -137,6 +138,7 @@ export default function CreateInvoice() {
             />
           </div>
         </div>
+        <h3>Recipient info:</h3>
         <div className="package-form-grid">
           <div className="package-form-item recipient">
             <lable>Recipient name:</lable>
@@ -172,7 +174,7 @@ export default function CreateInvoice() {
             />
           </div>
         </div>
-        <button className="action-btn center" type="submit">
+        <button className="action-btn" type="submit">
           Create!
         </button>
       </form>

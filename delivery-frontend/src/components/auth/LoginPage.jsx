@@ -38,7 +38,7 @@ export default function LoginPage() {
       {error && <p className="error-massage">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-item">
-          <lable>Username:</lable>
+          <label>Username:</label>
           <br></br>
           <input
             type="text"
@@ -47,7 +47,7 @@ export default function LoginPage() {
           />
         </div>
         <div className="form-item">
-          <lable>Password:</lable>
+          <label>Password:</label>
           <br></br>
           <input
             type="password"

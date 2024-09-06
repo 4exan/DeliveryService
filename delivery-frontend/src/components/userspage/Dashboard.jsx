@@ -26,7 +26,11 @@ export default function Dashboard() {
           <li className="sidebar-list-item">
             My package
             <ul>
-              <li className="sidebar-list-item">
+              <li
+                className={`sidebar-list-item ${
+                  page === "active" ? "active" : ""
+                }`}
+              >
                 <button
                   onClick={(e) => setPage(e.target.value)}
                   value={`active`}
@@ -34,7 +38,11 @@ export default function Dashboard() {
                   Active
                 </button>
               </li>
-              <li className="sidebar-list-item">
+              <li
+                className={`sidebar-list-item ${
+                  page === "received" ? "active" : ""
+                }`}
+              >
                 <button
                   onClick={(e) => setPage(e.target.value)}
                   value={`received`}

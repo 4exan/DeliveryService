@@ -18,7 +18,9 @@ export default function PackageInfo() {
     setUPackage({ id: 0 });
   };
 
-  const handleEdit = async () => {};
+  const handleEdit = async () => {
+    navigate(`/admin/package/edit/${upackage.id}`);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

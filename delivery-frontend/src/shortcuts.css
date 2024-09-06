@@ -15,6 +15,10 @@
   margin-left: 20px;
 }
 
+.mlauto {
+  margin-left: auto;
+}
+
 .mr5 {
   margin-right: 5px;
 }
@@ -29,6 +33,10 @@
 
 .mr20 {
   margin-right: 20px;
+}
+
+.mlright {
+  margin-right: auto;
 }
 
 /*COLOR*/

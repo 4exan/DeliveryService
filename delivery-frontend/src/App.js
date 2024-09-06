@@ -13,7 +13,7 @@ import Dashboard from "./components/userspage/Dashboard";
 import { useAuth } from "./components/context/AuthContext.jsx";
 import CreateInvoice from "./components/userspage/CreateInvoice.jsx";
 import PackageSearch from "./components/common/adminpage/PackageSearch.jsx";
-import PackageInfo from "./components/common/adminpage/PackageSearch.jsx";
+import EditPackage from "./components/common/adminpage/EditPackage.jsx";
 
 export default function App() {
   const { isAuthenticated, isAdmin } = useAuth();
@@ -48,9 +48,13 @@ export default function App() {
                 <Route path="/admin/package" element={<PackageSearch />} />
                 <Route
                   path="/admin/package/:packageId"
-                  element={<PackageInfo />}
+                  element={<PackageSearch />}
                 />
                 <Route path="/update-user/:userId" element={<UpdateUser />} />
+                <Route
+                  path="/admin/package/edit/:packageId"
+                  element={<EditPackage />}
+                />
               </>
             )}
             <Route path="*" element={<Navigate to="/login" />} />
