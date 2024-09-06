@@ -56,3 +56,449 @@
 .tgreen {
   color: #00d100;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.active {
+  color: black;
+}
+
+.action-btn {
+  border: none;
+  border-radius: 3px;
+  background-color: red;
+  color: #fff;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+
+  width: auto;
+  height: 25px;
+
+  cursor: pointer;
+}
+
+.action-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-family: inherit;
+}
+
+.action-btn:active {
+  scale: 98%;
+  transition: all 0.4s;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 50px;
+
+  text-align: left;
+
+  background-color: red;
+
+  color: #fff;
+  font-size: 14px;
+
+  height: 50px;
+}
+
+.footer span {
+  position: inherit;
+  bottom: 15px;
+  left: 15px;
+}
+
+.navbar {
+  background-color: #f3f3f3;
+  height: 50px;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(167, 167, 167, 0.5);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(167, 167, 167, 0.5);
+  box-shadow: 0px 1px 10px 0px rgba(167, 167, 167, 0.5);
+}
+
+.navbar a {
+  text-decoration: none;
+
+  color: red;
+
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar li {
+  margin-left: 25px;
+}
+
+.navbar li:last-child {
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.auth-container button {
+}
+
+.error-massage {
+  color: red;
+  margin-left: 20px;
+}
+
+.form-container {
+  border: 1px solid grey;
+  border-radius: 5px;
+
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.form-container input {
+  border: none;
+  background-color: #e9e9e9;
+  border-radius: 5px;
+
+  height: 25px;
+
+  font-family: inherit;
+  font-size: 20px;
+
+  text-align: center;
+}
+
+.form-container h2 {
+  margin: 20px;
+}
+
+.form-item {
+  margin: 25px;
+}
+
+.profile-container {
+  margin-top: 50px;
+  margin-left: 25px;
+}
+
+.home {
+  margin-top: 50px;
+}
+
+.dashboard {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 88%;
+  margin-top: 50px;
+  display: flex;
+}
+
+.sidebar {
+  width: 20%;
+}
+
+.main-panel {
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.sidebar-list {
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  color: grey;
+}
+
+.sidebar-list-item button {
+  color: grey;
+  background-color: transparent;
+  border: none;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  cursor: pointer;
+}
+
+.active button {
+  font-weight: 600;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: grey;
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.invoice-btn {
+  background-color: red;
+  width: 150px;
+  height: 25px;
+  text-align: center;
+  margin: 15px;
+}
+
+.invoice-btn a {
+  color: #fff;
+}
+
+.dash-packages {
+}
+
+.page-title::first-letter {
+  text-transform: capitalize;
+}
+
+.table {
+  border: 1px solid grey;
+  width: 1200px;
+  height: auto;
+
+  border-collapse: collapse;
+
+  text-align: center;
+}
+
+.table th {
+  height: 25px;
+  width: 50px;
+
+  border: 1px solid grey;
+}
+
+.table td {
+  height: 25px;
+  width: 50px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  border: 1px solid grey;
+}
+
+.main-container {
+  display: flex;
+  margin-top: 50px;
+}
+
+.main-item {
+  height: auto;
+  width: 33.3%;
+}
+
+.main-item p {
+  padding: 10px;
+}
+
+.main-item h2 {
+  padding: 10px;
+}
+
+.wide {
+  display: flex;
+  width: 80%;
+}
+
+.package-form-container {
+  /* margin-top: 100px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto; */
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(128, 128, 128, 0.6);
+
+  padding: 25px;
+
+  border-radius: 10px;
+}
+
+.package-form-container h2 {
+  margin-left: 40%;
+}
+
+.package-form-container input {
+  font-family: inherit;
+  font-size: 14px;
+
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(204, 204, 204, 0.5);
+  height: 25px;
+  text-align: center;
+}
+
+.package-form-container button {
+  margin-top: 20px;
+  width: 25%;
+}
+
+.package-form-grid {
+  /* border: 1px solid red; */
+  width: auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.center {
+  width: auto;
+
+  margin-left: auto;
+
+  text-align: center;
+}
+
+.package-info-container {
+  padding: 10px;
+
+  border-radius: 10px;
+
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid grey;
+
+  width: 80%;
+  height: 70%;
+}
+
+.package-info-container span {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+  margin-left: 25px;
+}
+
+.package-info-grid {
+  display: flex;
+}
+
+.package-info-child {
+  width: 30%;
+  height: 300px;
+  margin: auto;
+}
+
+.height20 {
+  height: 20%;
+}
+
+.invoice-info-container {
+  padding: 10px;
+
+  border-radius: 10px;
+
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid grey;
+
+  width: 80%;
+  height: 70%;
+}
+
+.invoice-info-container span {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+  margin-left: 25px;
+}
+
+.invoice-info-grid {
+  display: flex;
+}
+
+.invoice-info-child {
+  width: 30%;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.button-panel {
+  margin: 10px;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid grey;
+
+  padding: 20px;
+
+  border-radius: 25px;
+
+  background-color: white;
+
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.modal-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0px;
+  height: 0px;
+  background-color: rgba(0, 0, 0, 0);
+}
+/* .sender {
+  border: 1px solid red;
+}
+
+.package {
+  border: 1px solid blue;
+}
+
+.recipient {
+  border: 1px solid green;
+} */

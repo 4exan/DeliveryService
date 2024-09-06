@@ -20,14 +20,14 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="profile-container">
-      <h2>Profile Information</h2>
+    <div className="m-24">
+      <h2 className="text-3xl font-semibold mb-5">Profile Information</h2>
       <p>Username: {profileInfo.username}</p>
       <p>Name: {profileInfo.name}</p>
       <p>Email: {profileInfo.email}</p>
       <p>Phone: {profileInfo.phone}</p>
       {profileInfo.role === "ADMIN" && (
-        <button className="action-btn">
+        <button className="bg-[#ff2e2e] p-1 rounded-md text-white font-semibold mt-5">
           <Link to={`/update-user/${profileInfo.id}`}>Update profile</Link>
         </button>
       )}
