@@ -33,11 +33,16 @@ export default function Packages({ currentPage }) {
 
   if (packages.length === 0) {
     return (
-      <div className="dash-packages">
-        <h2 className="page-title">{currentPage}</h2>
-        <div className="table-container center">
+      <div className="dash-packages mt-12">
+        <h2 className="first-letter:uppercase text-2xl font-semibold">
+          {currentPage}
+        </h2>
+        <div className="table-container center mt-12 mx-80">
           <h2 className="center">Currently no packages!</h2>
-          <button className="action-btn center" onClick={handleClickInvoice}>
+          <button
+            className="bg-delivery-red text-white rounded-md w-auto px-2 center"
+            onClick={handleClickInvoice}
+          >
             Create new package!
           </button>
         </div>
@@ -56,10 +61,12 @@ export default function Packages({ currentPage }) {
   const filterPackages = async () => {};
 
   return (
-    <div className="dash-packages">
-      <h2 className="page-title">{currentPage}</h2>
-      <div className="table-container">
-        <table className="table">
+    <div className="dash-packages mt-12">
+      <h2 className="first-letter:uppercase text-2xl font-semibold">
+        {currentPage}
+      </h2>
+      <div className="mt-12">
+        <table className="table w-11/12">
           <thead>
             <tr>
               <th>ID:</th>
