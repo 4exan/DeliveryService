@@ -42,7 +42,7 @@ export default class PackageService {
     }
   }
 
-  static async changePackage(id, packageData, token) {
+  static async editPackage(id, packageData, token) {
     try {
       const response = await axios.put(
         `${PackageService.BASE_URL}/package/edit/${id}`,

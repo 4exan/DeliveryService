@@ -17,9 +17,12 @@ export default function Dashboard() {
   return (
     <div className="dashboard">
       <div className="sidebar">
-        <ul className="sidebar-list">
-          <li className="invoice-btn">
-            <button className="action-btn" onClick={handleClickInvoice}>
+        <ul className="sidebar-list ml-10 border-r-2 border-red-500 h-2/4">
+          <li className=" m-10">
+            <button
+              className="bg-delivery-red text-white rounded-md w-auto px-2 center"
+              onClick={handleClickInvoice}
+            >
               Create invoice
             </button>
           </li>

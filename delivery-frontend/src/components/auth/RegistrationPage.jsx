@@ -44,7 +44,7 @@ export default function RegistrationPage() {
 
   return (
     <div className="form-container">
-      <h2>Registration:</h2>
+      <h2 className="font-semibold text-2xl text-center">Registration:</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-item">
           <lable>Username:</lable>
@@ -101,7 +101,12 @@ export default function RegistrationPage() {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <button
+          type="submit"
+          className="bg-red-600 text-white border-none rounded-lg w-1/4 m-auto ml-5 mb-2"
+        >
+          Register
+        </button>
       </form>
     </div>
   );

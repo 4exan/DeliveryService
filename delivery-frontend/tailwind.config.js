@@ -5,6 +5,11 @@ module.exports = {
     extend: {
       colors: {
         "delivery-red": "#ff2e2e",
+        "delivery-green": "#00d100",
+        "delivery-yellow": "#FFFF00",
+      },
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
       },
     },
   },

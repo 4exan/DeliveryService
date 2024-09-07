@@ -28,23 +28,29 @@ export default function ConfirmModal(props) {
         centered
       >
         <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">
+          <Modal.Title
+            id="contained-modal-title-vcenter"
+            className="font-semibold text-2xl p-5 center"
+          >
             Confirmation
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Confirm status change</h4>
-          <p>
+          <h4 className="font-semibold">Confirm status change</h4>
+          <p className="p-5">
             You about to change package status, are you sure you want to do
             this?
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <button className="action-btn red" onClick={props.onHide}>
+          <button
+            className="bg-delivery-red text-white rounded-md w-auto px-2 ml-5 cursor-pointer"
+            onClick={props.onHide}
+          >
             Cancel
           </button>
           <button
-            className="action-btn green ml10"
+            className="bg-green-600 text-white rounded-md w-auto px-2 ml-96 cursor-pointer"
             onClick={() => handleConfirm()}
           >
             Change

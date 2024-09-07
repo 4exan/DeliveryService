@@ -2,6 +2,8 @@ package ua.kusakabe.delivery.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 import ua.kusakabe.delivery.entity.Package;
 import ua.kusakabe.delivery.entity.User;

@@ -50,28 +50,32 @@ export default function PackageInfo() {
         />
         <div className="package-info-container">
           <form onSubmit={handleBack}>
-            <input type="submit" className="action-btn" value={`Back`} />
+            <input
+              type="submit"
+              className="bg-delivery-red text-white rounded-md w-auto px-2 center cursor-pointer"
+              value={`Back`}
+            />
           </form>
-          <h2>
+          <h2 className="p-5 font-semibold text-2xl">
             Package ID: {upackage.id}
             <span> Status: {upackage.status}</span>
           </h2>
           <div className="package-info-grid">
             <div className="package-info-child">
-              <h3>Sender info:</h3>
+              <h3 className="font-semibold text-xl">Sender info:</h3>
               <p>Sender name: {upackage.senderName}</p>
               <p>Sender phone: {upackage.senderPhone}</p>
               <p>Sender department: {upackage.senderDepartment.number}</p>
             </div>
             <div className="package-info-child">
-              <h3>Package info:</h3>
+              <h3 className="font-semibold text-xl">Package info:</h3>
               <p>Package type: {upackage.packageType}</p>
               <p>Package description: {upackage.packageDescription}</p>
               <p>Package price: {upackage.packagePrice}</p>
               <p>Package params: {upackage.packageParams}</p>
             </div>
             <div className="package-info-child">
-              <h3>Recipient info:</h3>
+              <h3 className="font-semibold text-xl">Recipient info:</h3>
               <p>Recipient name: {upackage.recipientName}</p>
               <p>Recipient phone: {upackage.recipientPhone}</p>
               <p>Recipient department: {upackage.recipientDepartment.number}</p>
@@ -79,13 +83,13 @@ export default function PackageInfo() {
           </div>
           <div className="button-panel">
             <button
-              className="action-btn ml10 red"
+              className="bg-delivery-red ml-5 text-white rounded-md w-auto px-2 center cursor-pointer"
               onClick={() => handleEdit()}
             >
               Edit
             </button>
             <button
-              className="action-btn ml10 green"
+              className="bg-green-600 text-white rounded-md w-auto px-2 ml-5 cursor-pointer"
               onClick={() => setModalShow(true)}
             >
               Set next status
@@ -97,7 +101,7 @@ export default function PackageInfo() {
   }
 
   return (
-    <div className="form-container">
+    <div className="form-container px-5">
       <form onSubmit={handleSubmit}>
         <input
           className="form-item input-number"
@@ -106,7 +110,10 @@ export default function PackageInfo() {
           value={packageId}
           onChange={(e) => setPackageId(e.target.value)}
         />
-        <button type="submit" className="action-btn form-item">
+        <button
+          type="submit"
+          className="bg-delivery-red text-white rounded-md w-auto px-2 center"
+        >
           Find!
         </button>
       </form>
